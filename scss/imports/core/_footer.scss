@@ -1,0 +1,197 @@
+// css footer
+.footer {
+    padding-top: 70px;
+    background: #f8f8f8;
+    .title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333333;
+        text-transform: uppercase;
+        height: 4rem;
+        margin-bottom: 22px;
+    }
+    &__top {
+        @include flexbox(space-between);
+        width: 100%;
+        padding-bottom: 69px;
+    }
+    &__desc {
+        width: calc(40% - 20px);
+        &-content {
+            padding-bottom: 20px;
+            position: relative;
+            &::after {
+                @include pseudo;
+                bottom: 0;
+                left: 0;
+                @include size(100%, 1px);
+                background: #e5e5e5;
+            }
+            .logo {
+                height: 4rem;
+                margin-bottom: 22px;
+            }
+            article {
+                @include text(15px, "Roboto Regular", #999999, 24px);
+                padding-top: 20px;
+                margin-bottom: 49px;
+            }
+            p {
+                span {
+                    font-size: 14px;
+                    color: #333333;
+                    &:first-child {
+                        font-size: 18px;
+                        font-family: "Montserrat Bold";
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        &-form {
+            margin-top: 15px;
+            form {
+                width: 100%;
+                max-width: 35rem;
+                display: flex;
+                input {
+                    padding: 0 20px;
+                    border: 1px solid #e7e7e7;
+                    border-right: 0;
+                    &:focus {
+                        outline: 0;
+                    }
+                }
+                button {
+                    background: $primary-cl;
+                    padding: 1.5rem 3.5rem;
+                    font-size: 14px;
+                    font-family: "Montserrat Bold";
+                    color: white;
+                }
+            }
+        }
+        &-social {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            span {
+                @include text(15px, "Robot Light", #999999, 24px);
+                margin-right: 10px;
+            }
+            svg {
+                @include size(17px);
+                margin-right: 10px;
+                cursor: pointer;
+                * {
+                    fill: $primary-cl;
+                }
+            }
+        }
+    }
+    &__blogs {
+        width: calc(35% - 20px);
+        &-item {
+            @include mid(true);
+            &:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+        &-img {
+            @include size(120px, 80px);
+            object-fit: cover;
+            cursor: pointer;
+        }
+        &-content {
+            margin-left: 21px;
+            p {
+                font-size: 12px;
+                line-height: 18px;
+                font-weight: 600;
+                color: #333333;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+            span {
+                @include text(13px, "Robot Light", #999999, 24px);
+            }
+        }
+    }
+    &__insta {
+        width: calc(25% - 20px);
+        span {
+            @include text(13px, "Robot Light", #999999, 24px);
+            font-style: italic;
+            cursor: pointer;
+        }
+        &-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 2px;
+            margin-bottom: 20px;
+        }
+        &-item {
+            position: relative;
+            overflow: hidden;
+            height: 88px;
+            cursor: pointer;
+            img {
+                @include midimg;
+            }
+        }
+    }
+    &__bottom {
+        text-align: center;
+        border-top: 1px solid #e5e5e5;
+        padding: 24px 0;
+        p {
+            font-size: 14px;
+            color: #333333;
+            span {
+                color: $bg-cl-1;
+            }
+        }
+    }
+
+    @include sm {
+        .title {
+            text-align: center;
+        }
+        &__item {
+            &:not(:last-child) {
+                margin-bottom: 100px;
+            }
+        }
+        &__top {
+            display: block;
+            padding-bottom: 20px;
+        }
+        &__desc,
+        &__blogs,
+        &__insta {
+            width: 100%;
+        }
+        &__insta {
+            &-item {
+                height: 200px;
+            }
+        }
+        &__blogs {
+            &-item {
+                justify-content: flex-start;
+            }
+        }
+    }
+    @include xs {
+        &__item {
+            &:not(:last-child) {
+                margin-bottom: 50px;
+            }
+        }
+        &__insta {
+            &-item {
+                height: 100px;
+            }
+        }
+    }
+}

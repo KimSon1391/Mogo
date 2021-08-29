@@ -1,0 +1,236 @@
+// css components
+.content__txt {
+    text-align: center;
+    h3 {
+        @include text(24px, "Kaushan", black);
+        margin-bottom: 18px;
+    }
+    h2 {
+        @include text(30px, "Montserrat Bold", black, normal, uppercase, normal);
+        padding-bottom: 40px;
+        margin-bottom: 55px;
+        position: relative;
+        &::after {
+            @include pseudo;
+            @include absoluteCenter(left);
+            @include size(60px, 3px);
+            background: $bg-cl-1;
+            bottom: 0;
+        }
+    }
+    article {
+        @include text(15px, "Roboto Regular", $text-cl, 24px);
+        margin-bottom: 90px;
+    }
+    @include xs {
+        article {
+            margin-bottom: 60px;
+        }
+    }
+}
+
+.product {
+    &__wrap {
+        @include flexbox(space-between, center);
+        width: 100%;
+    }
+    &__item {
+        cursor: pointer;
+
+        &.flex {
+            width: calc((100% / 3) - 30px);
+            height: 250px;
+            position: relative;
+            &::after {
+                @include pseudo;
+                @include fullscreen;
+                background: $primary-cl;
+            }
+        }
+        @include transition($t $cubic);
+        @include minW($md-min) {
+            &:hover {
+                .product__img.bgMove {
+                    @include transform(translate(-10px, -10px));
+                    @include transition($t $cubic);
+                }
+                .product__img-bg {
+                    @include visible(1);
+                    @include transition($t $cubic);
+                }
+            }
+        }
+    }
+    &__img {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        @include transition($t $cubic);
+        z-index: 1;
+        .image {
+            @include midimg;
+        }
+        &-bg {
+            position: absolute;
+            @include fullscreen;
+            background: $bg-lieaner;
+            @include visible(0);
+            @include transition($t $cubic);
+        }
+        &-content {
+            @include size(100%);
+            @include mid(true);
+            flex-direction: column;
+            p {
+                margin-top: 10px;
+                @include text(18px, "Montserrat Bold", white);
+            }
+
+            img {
+                width: 30px;
+            }
+        }
+    }
+    @include xs {
+        &__wrap {
+            display: block;
+        }
+        &__item {
+            &.flex {
+                width: 100%;
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
+
+.quote {
+    background: #f8f8f8;
+    &.avatar {
+        .quote__img {
+            border: 0;
+        }
+    }
+    .container {
+        padding: 70px 0;
+        position: relative;
+    }
+    &__wrap {
+        @include size(100%);
+    }
+
+    &__item {
+        @include flexbox(space-between, center);
+        width: 100%;
+        height: 200px;
+        padding: 0 115px;
+    }
+    .arrow {
+        position: absolute;
+        @include absoluteCenter(top);
+        width: 30px;
+        cursor: pointer;
+        &.--left {
+            left: 15px;
+            @include animation(arrowSliderLeft 1s ease-out forwards infinite);
+            @include transform(translateY(-50%) rotate(90deg));
+        }
+        &.--right {
+            right: 15px;
+            @include animation(arrowSliderRight 1s ease-out forwards infinite);
+            @include transform(translateY(-50%) rotate(-90deg));
+        }
+
+        @include keyframes(arrowSliderLeft) {
+            0% {
+                @include transform(translateX(0) rotate(90deg));
+                opacity: 0;
+            }
+            100% {
+                @include transform(translateX(-20px) rotate(90deg));
+                opacity: 1;
+            }
+        }
+        @include keyframes(arrowSliderRight) {
+            0% {
+                @include transform(translateX(0) rotate(-90deg));
+                opacity: 0;
+            }
+            100% {
+                @include transform(translateX(20px) rotate(-90deg));
+                opacity: 1;
+            }
+        }
+    }
+    &__icon {
+        @include size(25%, 100%);
+        @include mid(true);
+    }
+    &__img {
+        @include size(140px);
+        border: 3px solid $primary-cl;
+        @include mid(true);
+    }
+    &__content {
+        @include size(70%, 100%);
+        padding: 20px 0;
+        @include flexbox(space-between, stretch, column);
+        blockquote {
+            font-size: 22px;
+            line-height: 36px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #999999;
+        }
+        span {
+            font-size: 24px;
+            font-family: "Kaushan";
+            color: #333333;
+            position: relative;
+            margin-left: 80px;
+            &::before {
+                @include pseudo;
+                @include absoluteCenter(top);
+                @include size(60px, 3px);
+                left: -80px;
+                background: $bg-cl-1;
+            }
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        &__content {
+            blockquote {
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
+    }
+    @include sm {
+        &__item {
+            padding: 0 60px;
+        }
+        &__content {
+            blockquote {
+                font-size: 18px;
+                line-height: 28px;
+            }
+            span {
+                font-size: 20px;
+            }
+        }
+    }
+    @include xs {
+        &__icon {
+            display: none;
+        }
+
+        &__content {
+            width: 100%;
+        }
+        &__content {
+            padding: 0;
+            blockquote {
+                font-size: 16px;
+            }
+        }
+    }
+}

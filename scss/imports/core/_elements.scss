@@ -1,0 +1,82 @@
+// css button, title, icon, elements...
+.btn {
+    border: 0;
+    background-color: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btnmenu {
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+    display: none;
+    &.active {
+        display: block;
+    }
+    &::after,
+    &::before,
+    span {
+        background: $white-cl;
+        @include size(30px, 3px);
+        @include br(3px);
+        content: "";
+        display: block;
+        margin: 5px 0;
+        @include transition(all 0.5s ease-in-out);
+    }
+    &.tranform {
+        z-index: 20;
+        @include transition(all 0.5s ease-in-out);
+
+        &::before {
+            @include transform(translate(9px, 3px) rotate(205deg));
+            width: 20px;
+            background: $white-cl;
+            @include transition(all 0.5s ease-in-out);
+        }
+        &::after {
+            background: $white-cl;
+            width: 20px;
+            @include transform(translate(9px, -3px) rotate(-205deg));
+            @include transition(all 0.5s ease-in-out);
+        }
+        span {
+            background: $white-cl;
+        }
+    }
+}
+
+.backtop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: inline-block;
+    @include visible(0);
+    @include size(45px);
+    border: 3px solid $bg-cl-2;
+    z-index: 4;
+    cursor: pointer;
+    &.active {
+        @include visible(1);
+    }
+    @include minW($md-min) {
+        &:hover {
+            @include animation(backtop 1s ease-out forwards infinite);
+        }
+    }
+    @include xxs {
+        @include size(35px);
+    }
+}
+
+@include keyframes(backtop) {
+    0% {
+        @include transform(translateX(0));
+        opacity: 0.4;
+    }
+    100% {
+        @include transform(translateY(-8px));
+        opacity: 1;
+    }
+}

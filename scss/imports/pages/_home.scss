@@ -1,0 +1,713 @@
+//CAROUSEL
+.carousel {
+    min-height: 100rem;
+    background: $bg-lieaner, url(/img/img-header-bg.jpg);
+    @include bgImage();
+    color: white;
+    @include mid(true);
+    position: relative;
+    &__content {
+        text-align: center;
+        h2 {
+            font-size: 72px;
+            font-family: "Kaushan";
+            margin-bottom: 35px;
+        }
+        h1 {
+            padding: 0 50px 57px;
+            text-align: center;
+            font-size: 150px;
+            line-height: 140px;
+            text-transform: uppercase;
+            font-family: "Montserrat Bold";
+            margin-bottom: 50px;
+            position: relative;
+            &::after {
+                @include pseudo();
+                @include absoluteCenter(left);
+                bottom: 0;
+                @include size(60px, 3px);
+                background: $white-cl;
+            }
+        }
+    }
+    &__btn {
+        font-size: 14px;
+        color: white;
+        font-family: "Montserrat Bold";
+        border: 3px solid $white-cl;
+        padding: 10px 28px;
+        background: transparent;
+        @include transition($t);
+        &:hover {
+            background: rgba($bg-cl-1, 0.8);
+            @include transition($t);
+        }
+    }
+
+    &__bottom {
+        width: 100%;
+        position: absolute;
+        @include absoluteCenter(left);
+        bottom: 26px;
+        .container {
+            @include flexbox(space-between, center);
+            width: 100%;
+        }
+        &-item {
+            width: calc((100% / 4) - 30px);
+            position: relative;
+            padding-top: 24px;
+            color: white;
+            cursor: pointer;
+            p span {
+                text-transform: uppercase;
+                font-size: 18px;
+                &:first-child {
+                    font-size: 24px;
+                    font-family: "Montserrat Bold";
+                    margin-right: 10px;
+                }
+            }
+            &::before {
+                @include pseudo();
+                @include size(100%, 3px);
+                top: 0;
+                left: 0;
+                background: #f7eac5;
+                @include transition($t);
+            }
+            &::after {
+                @include pseudo();
+                width: 0;
+                height: 3px;
+                top: 0;
+                left: 0;
+                background: $bg-cl-1;
+                @include transition($t);
+            }
+            @include minW($md-min) {
+                &:hover {
+                    &::before {
+                        background: white;
+                        @include transition($t);
+                    }
+                    &::after {
+                        width: 70px;
+                        @include transition($t);
+                    }
+                }
+            }
+        }
+    }
+
+    @include md {
+        &__content {
+            h1 {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+    @include sm {
+        &__content {
+            h1 {
+                font-size: 100px;
+            }
+            h2 {
+                font-size: 52px;
+            }
+        }
+    }
+    @include xs {
+        min-height: 70rem;
+        &__content {
+            h1 {
+                font-size: 50px;
+                line-height: normal;
+            }
+            h2 {
+                font-size: 25px;
+            }
+        }
+        &__bottom {
+            &-item {
+                text-align: center;
+                p {
+                    @include flexbox(center, center, column);
+                    span {
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        &:first-child {
+                            font-size: 23px;
+                            font-family: "Montserrat Bold";
+                            margin-right: 0;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//ABOUT
+.about {
+    padding: $pd-section 0;
+    @include xs {
+        padding: $pd-section-mb 0;
+    }
+}
+
+//NUMBER
+.number {
+    height: 270px;
+    background: $primary-cl;
+    @include mid(true);
+    .container {
+        @include flexbox(space-between, center);
+        @include size(100%);
+    }
+    &__item {
+        width: calc(100% / 5);
+        height: 100%;
+        @include flexbox(center, center, column);
+        color: white;
+        font-size: 14px;
+        border-right: 1px solid #b5eae0;
+        .amount {
+            font-size: 72px;
+            font-family: "Montserrat Bold";
+            margin-bottom: 21px;
+            cursor: default;
+            @include transition($t);
+            @include minW($md-min) {
+                &:hover {
+                    @include transform(translateY(-10px));
+                    @include transition($t);
+                }
+            }
+        }
+        &:first-child {
+            border-left: 1px solid #b5eae0;
+        }
+    }
+    @include sm {
+        &__item {
+            .amount {
+                font-size: 60px;
+            }
+        }
+    }
+    @include xs {
+        height: 100%;
+        padding: $pd-section-mb 0;
+        .container {
+            display: block;
+        }
+        &__item {
+            width: 100%;
+            border: 0;
+            &:first-child {
+                border: 0;
+            }
+            &:not(:last-child) {
+                margin-bottom: 50px;
+            }
+        }
+    }
+}
+
+//SERVICES
+.services {
+    padding: $pd-section-mb 0;
+    &__wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 100px 0;
+        position: relative;
+        .line {
+            position: absolute;
+            @include size(100%, 1px);
+            background: #f3f0f0;
+            @include mid;
+        }
+    }
+    &__item {
+        cursor: pointer;
+
+        padding-left: 30px;
+        @include flexbox(center, flex-start);
+        img {
+            margin-top: 3px;
+            margin-right: 29px;
+        }
+        @include minW($md-min) {
+            &:hover {
+                .services__content h4 {
+                    color: $primary-cl;
+                    @include transition(0.5s);
+                }
+            }
+        }
+    }
+    &__content {
+        h4 {
+            font-size: 14px;
+            margin-bottom: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            @include transition(0.5s);
+        }
+        article {
+            font-size: 15px;
+            line-height: 24px;
+            color: $text-cl;
+            @include overtext(2);
+        }
+    }
+    @include xs {
+        &__wrap {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        &__item {
+            align-items: center;
+        }
+    }
+}
+
+//UNIQUE
+.device {
+    padding-top: $pd-section;
+    width: 100%;
+    height: 857px;
+    background: linear-gradient(to bottom, rgba(white, 0.7), rgba(white, 0.6)), url(/img/img-device-bg.png);
+    @include bgImage;
+    background-attachment: fixed;
+    img {
+        margin: 0 auto;
+    }
+    @include xs {
+        padding-top: $pd-section-mb;
+        height: 633px;
+    }
+    @include maxW(414px) {
+        height: 597px;
+    }
+    @include maxW(320px) {
+        height: 547px;
+    }
+}
+
+//WEDO
+.wedo {
+    margin-top: 110px;
+    padding-bottom: $pd-section;
+    &__content {
+        width: 100%;
+        height: 421px;
+        @include flexbox(space-between, flex-start);
+    }
+    &__img,
+    &__accordian {
+        width: calc((100% / 2) - 30px);
+    }
+    &__img {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        img {
+            @include midimg;
+        }
+    }
+    &__accordian {
+        &-item {
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+            .title {
+                cursor: pointer;
+                @include flexbox(space-between, center);
+                padding: 15px;
+                border: 1px solid #e5e5e5;
+                &__left {
+                    @include mid(true);
+                    span {
+                        font-size: 14px;
+                        color: #333333;
+                        margin-left: 15px;
+                    }
+                }
+                .arrow {
+                    width: 20px;
+                    @include transition($t);
+                }
+            }
+            .content {
+                border: 1px solid #e5e5e5;
+                @include text(15px, "Roboto Light", #999999, 24px);
+                padding: 15px;
+                display: none;
+                &.show {
+                    display: block;
+                }
+                &__txt {
+                    padding: 15px;
+                    text-align: left;
+                    overflow-y: auto;
+                    height: 18rem;
+                    @include customscroll(5px, #f5f5f5, $primary-cl);
+                    &::-webkit-scrollbar-thumb {
+                        border-radius: 20px;
+                    }
+                }
+            }
+            &.active {
+                .arrow {
+                    @include transform(rotate(-90deg));
+                    @include transition($t);
+                }
+            }
+        }
+    }
+    @include sm {
+        &__img,
+        &__accordian {
+            width: calc((100% / 2) - 15px);
+        }
+    }
+    @include xs {
+        &__img {
+            display: none;
+        }
+        &__accordian {
+            width: 100%;
+        }
+    }
+}
+
+//TEAM
+.team {
+    padding: $pd-section 0;
+    .product {
+        &__item {
+            height: 470px;
+        }
+        &__img {
+            &-content {
+                flex-direction: row;
+                .social__item {
+                    padding: 15px;
+                    background: $bg-cl-2;
+                    @include transition($t);
+                    &:not(:last-child) {
+                        border-right: 1px solid #f9bd87;
+                    }
+                    svg {
+                        @include size(25px);
+                        * {
+                            fill: $bg-cl-1;
+                        }
+                    }
+                    &:hover {
+                        background: $bg-cl-1;
+                        @include transition($t);
+                        svg {
+                            * {
+                                fill: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @include xs {
+        padding: $pd-section-mb 0;
+    }
+}
+
+//BANNER
+.banner {
+    background: #f8f8f8;
+    padding: 72px 0;
+    @include xs {
+        padding: 52px 0;
+    }
+}
+
+//WORK
+.work {
+    padding: $pd-section 0;
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .product__item {
+        height: 390px;
+        cursor: pointer;
+
+        &:nth-child(5) {
+            grid-area: 1/3/3/4;
+            height: 100%;
+        }
+        span {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin-top: 10px;
+            &:last-child {
+                font-size: 15px;
+                line-height: 24px;
+                font-family: arial;
+            }
+        }
+    }
+    @include md {
+        .product__item {
+            height: 290px;
+        }
+    }
+    @include sm {
+        .product__item {
+            height: 200px;
+        }
+    }
+    @include xs {
+        padding: $pd-section-mb 0;
+        &__grid {
+            display: block;
+        }
+        .product__item {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+//PEOPLE
+.people {
+    margin-top: 90px;
+    padding: $pd-section 0;
+    height: 83rem;
+    background: linear-gradient(to bottom, rgba(white, 0.7), rgba(white, 0.6)), url(/img/img-people-bg.png);
+    @include bgImage;
+    background-attachment: fixed;
+    &__wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 73px 88px;
+        padding: 0 22px;
+    }
+
+    &__item {
+        @include flexbox(center, flex-start);
+        img {
+            cursor: pointer;
+        }
+    }
+
+    &__content {
+        margin-top: 20px;
+        margin-left: 30px;
+        .author {
+            h5 {
+                font-size: 14px;
+                color: #333333;
+                font-weight: 600;
+                margin-bottom: 10px;
+                cursor: pointer;
+            }
+            span {
+                @include text(15px, "Roboto Light", #333333, 24px);
+                cursor: pointer;
+            }
+            padding-bottom: 18px;
+            margin-bottom: 23px;
+            position: relative;
+            &::after {
+                @include pseudo;
+                left: 0;
+                bottom: 0;
+                @include size(60px, 3px);
+                background: $bg-cl-1;
+            }
+        }
+        article {
+            @include text(15px, "Roboto Regular", #7e7e7e, 24px);
+        }
+    }
+    @include sm {
+        &__content {
+            article {
+                @include overtext(3);
+            }
+        }
+    }
+    @include xs {
+        padding: $pd-section-mb 0;
+        height: 112rem;
+        &__wrap {
+            display: block;
+        }
+        &__item {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+//BLOG
+.blog {
+    padding: $pd-section 0;
+    &__wrap {
+        width: 100%;
+        @include flexbox(space-between, center);
+    }
+    &__item {
+        width: calc((100% / 3) - 30px);
+        position: relative;
+        @include minW($md-min) {
+            &:hover {
+                .blog__img {
+                    img {
+                        @include transform(translate(-50%, -50%) scale(1.2));
+                        @include transition(1.5s ease-out);
+                    }
+                }
+                .blog__content h4 {
+                    color: $primary-cl;
+                    @include transition(0.5s ease-out);
+                }
+            }
+        }
+    }
+    &__img {
+        position: relative;
+        overflow: hidden;
+        height: 240px;
+        cursor: pointer;
+        img {
+            @include midimg;
+            @include transition(1.5s ease-out);
+        }
+    }
+    &__tab {
+        @include size(60px, 70px);
+        @include absoluteCenter(top);
+        background: $primary-cl;
+        left: -10px;
+        @include mid(true);
+        flex-direction: column;
+        span {
+            color: white;
+            font-size: 15px;
+            font-family: "Roboto Regular";
+            font-style: italic;
+        }
+        .date {
+            font-size: 30px;
+            margin-bottom: 6px;
+            font-family: "Roboto Light";
+            font-style: normal;
+            font-weight: bold;
+        }
+    }
+
+    &__content {
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333333;
+            text-transform: uppercase;
+            padding: 15px 0 10px;
+            cursor: pointer;
+            @include transition(0.5s ease-out);
+        }
+        p {
+            @include text(15px, "Robot Regular", #999999, 24px);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            @include overtext(2);
+            &::before {
+                @include pseudo;
+                bottom: 0;
+                left: 0;
+                @include size(100%, 1px);
+                background: #e5e5e5;
+            }
+        }
+    }
+    &__view {
+        display: flex;
+        align-items: center;
+        &-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            svg {
+                @include size(15px);
+                * {
+                    fill: $primary-cl;
+                }
+            }
+            &:first-child {
+                margin-right: 15px;
+            }
+            span {
+                @include text(15px, "Robot Light", #999999, 24px);
+                margin-left: 5px;
+            }
+        }
+    }
+    @include sm {
+        padding: $pd-section-mb 0;
+        &__wrap {
+            display: block;
+        }
+        &__item {
+            width: 100%;
+            &:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+        &__img {
+            height: 350px;
+        }
+        &__tab {
+            @include size(70px, 80px);
+        }
+    }
+    @include xs {
+        &__img {
+            height: 250px;
+        }
+    }
+}
+
+//MAP
+.map {
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(white, 0.7), rgba(white, 0.6)), url(/img/img-map.png);
+    @include bgImage;
+    @include flexbox(center, center, column);
+    @include text(24px, "Montserrat Bold", $bg-cl-1);
+    background-attachment: fixed;
+    h3 {
+        margin-top: 10px;
+        padding-bottom: 22px;
+        position: relative;
+        cursor: pointer;
+        &::before {
+            @include pseudo;
+            @include absoluteCenter(left);
+            bottom: 0;
+            @include size(60px, 3px);
+            background: $bg-cl-1;
+        }
+    }
+    @include sm {
+        height: 150px;
+    }
+}

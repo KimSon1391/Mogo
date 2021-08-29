@@ -1,0 +1,53 @@
+/*primary colors*/
+$white-cl: #fff;
+$black-cl: #000;
+
+$primary-cl: #95e1d3;
+$bg-cl-1: #e78182;
+$bg-cl-2: #efd788;
+$bg-lieaner: linear-gradient(to bottom, rgba($bg-cl-1, 0.8), rgba($bg-cl-2, 0.8));
+
+/*global text color*/
+$text-cl: #b3b3b3;
+$text-black-cl: #000;
+
+// timing transition
+$t: 0.4s;
+$cubic: cubic-bezier(0.84, 0.13, 0.33, 0.97);
+
+/*font families*/
+$font-stack: "Open Sans", sans-serif;
+$font-main: "Montserrat Regular";
+
+/*headings typo*/
+$fz-text: 16px;
+$lh-text: normal;
+
+$fz-text-m: 16px;
+$lh-text-m: normal;
+
+//
+$pd-section: 90px;
+$pd-section-mb: 70px;
+$height-header: 69px;
+
+//============================================================//
+
+/*BOXED LAYOUT*/
+$container-max-width: 1920px;
+$container-width: 1200px;
+$container-fluid-padding: 30px;
+$container-mb-padding: 15px;
+
+/*GRID - media queries breakpoints*/
+$xxs-min: 576px; // CÓ THỂ TÙY CHỈNH
+$xs-min: 768px; // KHÔNG THAY ĐỔI
+$sm-min: 992px; // KHÔNG THAY ĐỔI
+$md-min: 1200px; // KHÔNG THAY ĐỔI
+$lg-min: 1600px; // CÓ THỂ TÙY CHỈNH
+
+$xxs-max: ($xxs-min - 1); // Small Mobile
+$xs-max: ($xs-min - 1); // Mobile
+$sm-max: ($sm-min - 1); // Table
+$md-max: ($md-min - 1); // Desktop
+$lg-max: ($lg-min - 1); // Large Desktop
